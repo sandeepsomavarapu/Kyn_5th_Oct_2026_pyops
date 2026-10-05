@@ -1,0 +1,215 @@
+
+Language:
+========
+
+				communication-->human
+				telugu,hindi,tamil,kannada,panjabi....english
+				
+Programming Language				
+====================
+			
+				communication--machine
+				
+				laptop,mobile,....hd-->software-->application-->set of programs-->set of instructions
+
+
+		java,python,.net,c++,c,...
+		
+		1989-->python -->guido van rossam
+		
+		1991 feb 20th
+		
+		syntax-->ml
+		
+		java
+		
+		welcome to java 
+		
+file
+	Welcome.java
+	class Welcome{
+	public static void main(String args[])
+	{
+	System.out.println("")
+	}
+	}
+
+python
+1.x
+2.x
+3.x
+
+	3.14.8
+
+		python-->1960-70 the complete python monty circus show
+	
+1)OOPS  features C++
+2)Modular programming from modula-3
+3)functional programming deaturs from  c
+
+				C,ABC
+				
+	Features:
+============
+1)easy to learn(syntax)       30+ 
+2)dynamic typed PL					       
+3)Platform independent 			windows11    			linux          WORA
+															py								py
+4)portable 										salary=22.45		salary=22.52
+5)rich library								ml,ai,dl, --->numpy,pandas,matplotlib,seaborn,keras,sickitlearn
+6)free source and open source   -->jython,cpython,rubypython
+	
+	
+applications:
+===========
+		1.standlone apps
+		2.web apps
+		3.networking apps
+		4.AI 
+		5.ml
+		6.IOT
+		7.mobile apps
+		
+identifiers:
+=========
+
+			any name in python will call it as identifiers
+					
+					class,variable,function,obj name
+		
+				a-z
+				A-Z
+				0-9
+				_
+datatypes:
+==========					
+		eid,ename,sal,add,desi,aadar,contact,mail,age
+		
+		age numeric data 
+		salary  23.54434
+		name "sandeep"
+		
+		  diff Data types
+			int,str,bool,float,complex,range  --->fundamental DT   -->immutable -fixed 
+			
+			['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', '
+			break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', '
+			for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', '
+			return', 'try', 'while', 'with', 'yield']
+			
+			Garbage collection-->thread -->useless
+			
+			name="sandeep"
+			
+			number="ten"
+			number ="10"	
+			number+1 101
+			
+			type conversion
+			type casting
+			
+			.py
+			looping ,conditional statements
+			
+			
+			VSCODE   -->IDE
+			
+			Execution Flow:
+			==============
+			
+				welcome.py
+					py welcome.py
+					
+					--->py 
+					PVM-->interpreted 
+							0's 1's  -->binary /byte code 
+							
+							translator -->translation
+							
+							compiler --pyc(binary code)
+							
+							pyc-->pvm-->interpreter-->op
+					
+					input()
+					
+				Datatypes	
+					
+								int,str,bool,float,complex,range  --->fundamental DT   -->immutable -fixed -->sinlge value
+					
+								list,set,tuple,dict,frozenset-->advanced DT-->multiple values
+					
+							List:
+									if we have a requirements to store group of values into single entity
+					1.duplicates are allowed 
+					2.insertion order is preserved 
+					3.[]
+					4. haterogeneous objects are allowed
+					5.muttable
+					
+								tuple:
+					1.duplicates are allowed 
+					2.insertion order is preserved 
+					3.()
+					4. haterogeneous objects are allowed
+					5.imuttable	
+					
+					set:
+						if we have a requirements to store group of values into single entity
+					1.duplicates are  not allowed 
+					2.insertion order is  not preserved 
+					3.{}
+					4. haterogeneous objects are allowed
+					5.muttable
+					
+				frozenset:
+						if we have a requirements to store group of values into single entity
+					1.duplicates are  not allowed 
+					2.insertion order is  not preserved 
+					3.frozenset()
+					4. haterogeneous objects are allowed
+					5.imuttable
+					
+					Dict:
+					-----
+					if we have a requirement to store group of object as key,value pair
+					1.duplicates key are not allowed
+					2.values can be duplicate 
+					3.muttable
+					4.key and values can be any DT
+					5.{}
+					
+					
+					
+					
+					
+					
+					
+					
+					
+			
+			
+			
+			
+		
+		
+		
+		
+		
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+
+
+
+
+
+
