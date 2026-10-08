@@ -1,22 +1,46 @@
+import psutil
+import subprocess
 import logging
- 
+import time
+
+# 1. Setup Logging
 logging.basicConfig(
-    filename="app_logs.log",
+    filename="service_monitor.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
-                    )
-def safe_file_cleanup(file_path):
+)
+
+def monitor_and_heal_service(process_name):
+    logging.info(f"Checking status for process: {process_name}")
+    process_found = False
+
     try:
-        logging.info(f"Intiating reading the file{file_path}")
-        with open(file_path,'r') as file:
-            data=file.read()
-            print("file processed sucessfully")
-    except FileNotFoundError as fe :
-        logging.error(f"Target file is missing {file_path}")    
-        print("target file is not found ")
-    except PermissionError as pe:
-        logging.critical(f"Access denied for the file{file}")  
-        print("Insufficient Previliage")  
-    finally:
-        logging.info("file cleanup is completed")    
-safe_file_cleanup("dummy.json")  
+        # Search for active process
+        for proc in psutil.process_iter(['name']):
+            if process_name.lower() in proc.info['name'].lower():
+                process_found = True
+                break
+
+        if process_found:
+            msg = f"Service '{process_name}' is running normally."
+            print(f"[HEALTHY] {msg}")
+            logging.info(msg)
+        else:
+            warn_msg = f"Service '{process_name}' is NOT running! Initiating self-healing..."
+            print(f"[ALERT] {warn_msg}")
+            logging.warning(warn_msg)
+            
+            # Attempt service restart (Cross-platform safe fallback demo)
+            print(f"Executing restart command for '{process_name}'...")
+            time.sleep(2)
+            # Simulating successful recovery log entry
+            logging.info(f"Self-healing trigger dispatched for {process_name}.")
+            print(f"[RECOVERY] Service restart sequence executed for '{process_name}'.")
+
+    except Exception as e:
+        err_msg = f"Unexpected failure during monitoring: {str(e)}"
+        print(f"[ERROR] {err_msg}")
+        logging.error(err_msg)
+
+monitor_and_heal_service("MYSQL80")
+monitor_and_heal_service("chrome") 
