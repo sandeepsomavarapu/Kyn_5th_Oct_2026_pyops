@@ -1,0 +1,22 @@
+
+import subprocess
+import psutil
+
+def check_and_restart_service(service_name):
+    # Check if the service is running
+    service_running = False
+    for proc in psutil.process_iter(['name']):
+        if proc.info['name'] == service_name:
+            service_running = True
+            break
+
+    if service_running:
+        print(f"{service_name} is already running.")
+    else:
+        print(f"{service_name} is not running. Attempting to start it...")
+        try:
+            subprocess.run(["net", "start", service_name], check=True)
+            print(f"{service_name} started successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to start {service_name}: {e}")
+check_and_restart_service("Grafana")  # Replace with the actual service name you want to check and restart            
