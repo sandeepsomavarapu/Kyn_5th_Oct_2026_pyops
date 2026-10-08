@@ -1,30 +1,22 @@
-import schedule
-import time
-from datetime import datetime
-import os
-import shutil
-
-def perform_windows_backup():
-    timestamp = datetime.now().strftime("%H_%M_%S")
-    source_folder = r"C:\Logs\Applogs"
-    backup_folder = rf"C:\Logs\Applogs\Backup_{timestamp}"
-    print(f"Starting backup at {timestamp}")
-    
-    if not os.path.exists(backup_folder):
-        os.makedirs(backup_folder)
-    
-    for filename in os.listdir(source_folder):
-        source_file = os.path.join(source_folder, filename)
-        backup_file = os.path.join(backup_folder, filename)
-        
-        if os.path.isfile(source_file):
-            shutil.copy2(source_file, backup_file)
-            print(f"Backed up: {filename} at {datetime.now()}")
-def m1():
-    print("called m1 function ")
-schedule.every(10).seconds.do(perform_windows_backup)
-# schedule.every().day.at("11:01").do(m1)
-# schedule.every().thursday.at("11:03").do(m1)
-while True:
-    schedule.run_pending()
-    time.sleep(1)       
+import logging
+ 
+logging.basicConfig(
+    filename="app_logs.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+                    )
+def safe_file_cleanup(file_path):
+    try:
+        logging.info(f"Intiating reading the file{file_path}")
+        with open(file_path,'r') as file:
+            data=file.read()
+            print("file processed sucessfully")
+    except FileNotFoundError as fe :
+        logging.error(f"Target file is missing {file_path}")    
+        print("target file is not found ")
+    except PermissionError as pe:
+        logging.critical(f"Access denied for the file{file}")  
+        print("Insufficient Previliage")  
+    finally:
+        logging.info("file cleanup is completed")    
+safe_file_cleanup("dummy.json")  
