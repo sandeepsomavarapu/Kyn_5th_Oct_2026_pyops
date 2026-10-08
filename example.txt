@@ -1,22 +1,30 @@
+import schedule
+import time
+from datetime import datetime
+import os
+import shutil
 
-import subprocess
-import psutil
-
-def check_and_restart_service(service_name):
-    # Check if the service is running
-    service_running = False
-    for proc in psutil.process_iter(['name']):
-        if proc.info['name'] == service_name:
-            service_running = True
-            break
-
-    if service_running:
-        print(f"{service_name} is already running.")
-    else:
-        print(f"{service_name} is not running. Attempting to start it...")
-        try:
-            subprocess.run(["net", "start", service_name], check=True)
-            print(f"{service_name} started successfully.")
-        except subprocess.CalledProcessError as e:
-            print(f"Failed to start {service_name}: {e}")
-check_and_restart_service("Grafana")  # Replace with the actual service name you want to check and restart            
+def perform_windows_backup():
+    timestamp = datetime.now().strftime("%H_%M_%S")
+    source_folder = r"C:\Logs\Applogs"
+    backup_folder = rf"C:\Logs\Applogs\Backup_{timestamp}"
+    print(f"Starting backup at {timestamp}")
+    
+    if not os.path.exists(backup_folder):
+        os.makedirs(backup_folder)
+    
+    for filename in os.listdir(source_folder):
+        source_file = os.path.join(source_folder, filename)
+        backup_file = os.path.join(backup_folder, filename)
+        
+        if os.path.isfile(source_file):
+            shutil.copy2(source_file, backup_file)
+            print(f"Backed up: {filename} at {datetime.now()}")
+def m1():
+    print("called m1 function ")
+schedule.every(10).seconds.do(perform_windows_backup)
+# schedule.every().day.at("11:01").do(m1)
+# schedule.every().thursday.at("11:03").do(m1)
+while True:
+    schedule.run_pending()
+    time.sleep(1)       
